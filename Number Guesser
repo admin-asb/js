@@ -1,0 +1,48 @@
+let humanScore = 0;
+let computerScore = 0;
+let currentRoundNumber = 1;
+
+// Write your code below:
+const generateTarget = () => Math.floor(Math.random() * 9 + 1);
+const compareGuesser = (userGuess, compGuess, targetNum) => {
+  
+  let userDiff = Math.abs(targetNum - userGuess);
+  let compDiff = Math.abs(targetNum - compGuess);
+  
+  if ((userGuess === targetNum) && (compGuess === targetNum)) {
+    return true
+  };
+
+  if (userGuess === compGuess) {
+    return true
+  }
+
+  if (userDiff < 0) {
+    userDiff = userDiff * -1 
+  } else if (compDiff < 0) {
+    compDiff = compDiff * -1
+  };
+  
+  if (userDiff < compDiff) {
+    return true
+  } else if (userDiff > compDiff) {
+    return false
+  }
+
+  if (userDiff === compDiff) {
+    return true
+  }
+};
+
+let updateScore = winner => {
+    if (winner === 'human') {
+        humanScore ++;
+    } else if (winner === 'computer') {
+        computerScore ++;
+    }
+};
+
+//step 6
+const advanceRound = () => {
+    currentRoundNumber ++;
+};
